@@ -17,7 +17,11 @@ abstract class PuzzleTest {
 
     @Test
     fun testPart1Example() {
-        validate("example", part1, part1Example)
+        try {
+            validate("example", part1, part1Example)
+        } catch (e: ExampleSkippedException) {
+            println("Skipped")
+        }
     }
 
     @Test
@@ -27,7 +31,11 @@ abstract class PuzzleTest {
 
     @Test
     fun testPart2Example() {
-        validate("example", part2, part2Example)
+        try {
+            validate("example", part2, part2Example)
+        } catch (e: ExampleSkippedException) {
+            println("Skipped")
+        }
     }
 
     @Test
