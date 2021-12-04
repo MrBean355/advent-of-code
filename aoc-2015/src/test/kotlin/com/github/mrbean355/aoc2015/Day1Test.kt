@@ -1,6 +1,6 @@
+package com.github.mrbean355.aoc2015
+
 import com.github.mrbean355.aoc.PuzzleTest
-import com.github.mrbean355.aoc2015.day1Part1
-import com.github.mrbean355.aoc2015.day1Part2
 
 class Day1Test : PuzzleTest() {
 
