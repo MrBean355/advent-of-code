@@ -11,7 +11,7 @@ class Day1Test : PuzzleTest() {
     override val part1Puzzle = 138
 
     override val part2 = ::day1Part2
-    override val part2Example = 0
-    override val part2Puzzle = 0
+    override val part2Example = 1
+    override val part2Puzzle = 1771
 
 }
