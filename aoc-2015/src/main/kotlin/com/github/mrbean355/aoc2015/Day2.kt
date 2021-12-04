@@ -13,5 +13,9 @@ fun day2Part1(input: List<String>): Number {
 }
 
 fun day2Part2(input: List<String>): Number {
-    return 0
+    return input.sumOf { line ->
+        val (l, w, h) = line.split('x').map(String::toInt)
+        val (s1, s2) = listOf(l, w, h).sorted().dropLast(1)
+        2 * s1 + 2 * s2 + l * w * h
+    }
 }
