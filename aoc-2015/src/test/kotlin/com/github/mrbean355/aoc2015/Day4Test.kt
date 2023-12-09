@@ -1,18 +1,16 @@
 package com.github.mrbean355.aoc2015
 
 import com.github.mrbean355.aoc.PuzzleTest
-import com.github.mrbean355.aoc.skipExample
 
-class Day4Test : PuzzleTest() {
+class Day4Test : PuzzleTest(::day4Part1, ::day4Part2) {
 
-    override val resourceDir = "day4"
+    override val part1TestCases = mapOf(
+        "day4/example_1.txt" to 609043,
+        "day4/example_2.txt" to 1048970,
+        "day4/puzzle.txt" to 117946,
+    )
 
-    override val part1 = ::day4Part1
-    override val part1Example = 1048970
-    override val part1Puzzle = 117946
-
-    override val part2 = ::day4Part2
-    override val part2Example get() = skipExample()
-    override val part2Puzzle = 3938038
-
+    override val part2TestCases = mapOf(
+        "day4/puzzle.txt" to 3938038,
+    )
 }

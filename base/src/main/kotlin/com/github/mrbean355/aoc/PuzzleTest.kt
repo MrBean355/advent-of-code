@@ -3,52 +3,46 @@ package com.github.mrbean355.aoc
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.io.File
+import kotlin.time.measureTimedValue
 
-abstract class PuzzleTest {
-    abstract val resourceDir: String
+abstract class PuzzleTest(
+    private val part1: (List<String>) -> Any,
+    private val part2: (List<String>) -> Any,
+) {
 
-    abstract val part1: (List<String>) -> Number
-    abstract val part1Example: Number
-    abstract val part1Puzzle: Number
+    abstract val part1TestCases: Map<String, Any>
 
-    abstract val part2: (List<String>) -> Number
-    abstract val part2Example: Number
-    abstract val part2Puzzle: Number
+    abstract val part2TestCases: Map<String, Any>
 
     @Test
-    fun testPart1Example() {
-        try {
-            validate("example", part1, part1Example)
-        } catch (e: ExampleSkippedException) {
-            println("Skipped")
+    fun runPart1TestCases() {
+        part1TestCases.forEach { (inputFileName, expected) ->
+            runTestCase(inputFileName, expected, part1)
         }
     }
 
     @Test
-    fun testPart1Puzzle() {
-        validate("puzzle", part1, part1Puzzle)
-    }
-
-    @Test
-    fun testPart2Example() {
-        try {
-            validate("example", part2, part2Example)
-        } catch (e: ExampleSkippedException) {
-            println("Skipped")
+    fun runPart2TestCases() {
+        part2TestCases.forEach { (inputFileName, expected) ->
+            runTestCase(inputFileName, expected, part2)
         }
     }
 
-    @Test
-    fun testPart2Puzzle() {
-        validate("puzzle", part2, part2Puzzle)
-    }
+    private fun runTestCase(
+        inputFileName: String,
+        expected: Any,
+        action: (input: List<String>) -> Any,
+    ) {
+        val input = loadInput(inputFileName)
 
-    private fun validate(file: String, function: (List<String>) -> Number, expected: Number) {
-        val input = loadInput("$resourceDir/$file.txt")
+        val timedValue = runCatching {
+            measureTimedValue { action(input) }
+        }.getOrElse {
+            error("An exception was thrown for input $inputFileName: ${it.stackTraceToString()}")
+        }
 
-        val result = function(input)
-
-        assertEquals(expected, result)
+        println("$inputFileName took ${timedValue.duration}")
+        assertEquals("Wrong output for $inputFileName:", expected, timedValue.value)
     }
 
     private fun loadInput(name: String): List<String> {
