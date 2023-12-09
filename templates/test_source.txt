@@ -1,0 +1,16 @@
+package com.github.mrbean355.aoc$YEAR$
+
+import com.github.mrbean355.aoc.PuzzleTest
+
+class Day$DAY$Test : PuzzleTest(::day$DAY$Part1, ::day$DAY$Part2) {
+
+    override val part1TestCases = mapOf(
+        "day$DAY$/example.txt" to 0,
+       // "day$DAY$/puzzle.txt" to 0,
+    )
+
+    override val part2TestCases = mapOf(
+        "day$DAY$/example.txt" to 0,
+       // "day$DAY$/puzzle.txt" to 0,
+    )
+}
