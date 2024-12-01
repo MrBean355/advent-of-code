@@ -23,26 +23,32 @@ kotlin {
     compilerOptions.jvmTarget = JvmTarget.JVM_17
 }
 
-tasks.register("generateDayTemplate") {
+tasks.test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation(kotlin("test"))
+}
+
+tasks.register("generateYearTemplate") {
     doLast {
-        val dayArg = findProperty("day")?.toString()
-            ?: error("Missing day argument, use -Pday=x")
+        val yearArg = findProperty("year")?.toString()
+            ?: error("Missing year argument, use -Pyear=x")
 
-        require(dayArg.matches("""\d+/\d+""".toRegex())) {
-            "'day' argument must be in the format: year/day, e.g. -Pday=2023/1"
+        val year = yearArg.toInt()
+
+        repeat(25) {
+            val day = it + 1
+            copyTemplate("main", "Day%d.kt", "main_source.txt", day, year)
+            copyTemplate("test", "Day%dTest.kt", "test_source.txt", day, year)
+            createEmptyResources(day, year)
         }
-
-        val year = dayArg.substringBefore('/').toInt()
-        val day = dayArg.substringAfter('/').toInt()
-
-        copyTemplate("main", "Day%d.kt", "main_source.txt", day, year)
-        copyTemplate("test", "Day%dTest.kt", "test_source.txt", day, year)
-        createEmptyResources(day, year)
     }
 }
 
 fun copyTemplate(dir: String, file: String, template: String, day: Int, year: Int) {
-    val path = "aoc-$year/src/$dir/kotlin/com/github/mrbean355/aoc$year/".also {
+    val path = "src/$dir/kotlin/com/github/mrbean355/aoc$year/day$day/".also {
         file(it).mkdirs()
     }
 
@@ -56,7 +62,7 @@ fun copyTemplate(dir: String, file: String, template: String, day: Int, year: In
 }
 
 fun createEmptyResources(day: Int, year: Int) {
-    val resources = file("aoc-$year/src/test/resources/day$day/").apply { mkdirs() }
+    val resources = file("src/test/resources/$year/day$day/").apply { mkdirs() }
     file("$resources/example.txt").writeIfAbsent("")
     file("$resources/puzzle.txt").writeIfAbsent("")
 }
