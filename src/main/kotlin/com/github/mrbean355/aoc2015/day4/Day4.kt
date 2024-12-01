@@ -1,14 +1,18 @@
 package com.github.mrbean355.aoc2015.day4
 
+import com.github.mrbean355.aoc.Puzzle
 import java.math.BigInteger
 import java.security.MessageDigest
 
-fun day4Part1(input: List<String>): Number {
-    return input.first().findPrefixedMd5("00000")
-}
+class Day4(private val input: List<String>) : Puzzle {
 
-fun day4Part2(input: List<String>): Number {
-    return input.first().findPrefixedMd5("000000")
+    override fun part1(): Any {
+        return input.first().findPrefixedMd5("00000")
+    }
+
+    override fun part2(): Any {
+        return input.first().findPrefixedMd5("000000")
+    }
 }
 
 private fun String.findPrefixedMd5(prefix: String): Int {

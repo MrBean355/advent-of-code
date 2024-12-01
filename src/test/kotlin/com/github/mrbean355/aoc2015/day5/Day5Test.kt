@@ -1,8 +1,8 @@
 package com.github.mrbean355.aoc2015.day5
 
-import com.github.mrbean355.aoc.PuzzleTest
+import com.github.mrbean355.aoc.testing.PuzzleTest
 
-class Day5Test : PuzzleTest(::day5Part1, ::day5Part2) {
+class Day5Test : PuzzleTest(Day5::class) {
 
     override val part1TestCases = mapOf(
         "2015/day5/example_1.txt" to 2,

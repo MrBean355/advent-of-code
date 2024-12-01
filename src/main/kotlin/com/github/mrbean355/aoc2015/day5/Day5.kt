@@ -1,11 +1,16 @@
 package com.github.mrbean355.aoc2015.day5
 
-fun day5Part1(input: List<String>): Number {
-    return input.count(String::isNice)
-}
+import com.github.mrbean355.aoc.Puzzle
 
-fun day5Part2(input: List<String>): Number {
-    return 0
+class Day5(private val input: List<String>) : Puzzle {
+
+    override fun part1(): Any {
+        return input.count(String::isNice)
+    }
+
+    override fun part2(): Any {
+        return 0
+    }
 }
 
 private val vowels = listOf('a', 'e', 'i', 'o', 'u')

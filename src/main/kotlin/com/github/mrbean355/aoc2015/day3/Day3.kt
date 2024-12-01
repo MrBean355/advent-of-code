@@ -1,22 +1,27 @@
 package com.github.mrbean355.aoc2015.day3
 
-fun day3Part1(input: List<String>): Number {
-    val santa = Santa()
-    input.first().forEach(santa::move)
-    return santa.getVisitedHouses().size
-}
+import com.github.mrbean355.aoc.Puzzle
 
-fun day3Part2(input: List<String>): Number {
-    val directions = input.first().toMutableList()
-    val santa = Santa()
-    val robot = Santa()
+class Day3(private val input: List<String>) : Puzzle {
 
-    while (directions.isNotEmpty()) {
-        santa.move(directions.removeFirst())
-        robot.move(directions.removeFirst())
+    override fun part1(): Any {
+        val santa = Santa()
+        input.first().forEach(santa::move)
+        return santa.getVisitedHouses().size
     }
 
-    return (santa.getVisitedHouses() + robot.getVisitedHouses()).size
+    override fun part2(): Any {
+        val directions = input.first().toMutableList()
+        val santa = Santa()
+        val robot = Santa()
+
+        while (directions.isNotEmpty()) {
+            santa.move(directions.removeFirst())
+            robot.move(directions.removeFirst())
+        }
+
+        return (santa.getVisitedHouses() + robot.getVisitedHouses()).size
+    }
 }
 
 private class Santa {
