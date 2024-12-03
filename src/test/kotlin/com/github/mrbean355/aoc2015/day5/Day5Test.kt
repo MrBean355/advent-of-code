@@ -10,7 +10,7 @@ class Day5Test : PuzzleTest(Day5::class) {
     )
 
     override val part2TestCases = mapOf(
-        "2015/day5/example_2.txt" to 0,
-        "2015/day5/puzzle.txt" to 0,
+        "2015/day5/example_2.txt" to 2,
+        "2015/day5/puzzle.txt" to 69,
     )
 }

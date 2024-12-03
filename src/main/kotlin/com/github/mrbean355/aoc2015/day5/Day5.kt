@@ -9,7 +9,7 @@ class Day5(private val input: List<String>) : Puzzle {
     }
 
     override fun part2(): Any {
-        return 0
+        return input.count(String::isActuallyNice)
     }
 }
 
@@ -32,3 +32,21 @@ private fun String.isNice(): Boolean {
 }
 
 private fun Char.isVowel(): Boolean = this in vowels
+
+private fun String.isActuallyNice(): Boolean {
+    if (windowed(3).none { it[0] == it[2] }) {
+        return false
+    }
+
+    forEachIndexed { index, c ->
+        if (index == length - 1) {
+            return false
+        }
+        val pair = "$c${get(index + 1)}"
+        if (pair in substring(index + 2)) {
+            return true
+        }
+    }
+
+    error("How did we get here?")
+}
