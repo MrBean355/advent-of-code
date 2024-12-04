@@ -37,14 +37,16 @@ class Day20(input: List<String>) : Puzzle {
                 for (x in 0 until grid.width) {
                     val neighbours = grid.getNeighbours(x, y).toDecimal()
                     val pixel = enhancement[neighbours]
-                    mutated.set(x, y, pixel)
+                    mutated[x, y] = pixel
                 }
             }
 
             grid = mutated
         }
 
-        return grid.count { it == '#' }
+        return grid.count { (x, y) ->
+            grid[x, y] == '#'
+        }
     }
 
     private fun List<Char>.toDecimal(): Int {
