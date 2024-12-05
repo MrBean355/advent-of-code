@@ -3,9 +3,7 @@ package com.github.mrbean355.aoc2024.day1
 import com.github.mrbean355.aoc.Puzzle
 import kotlin.math.absoluteValue
 
-class Day1(input: List<String>) : Puzzle {
-
-    private val input = mapInput(input)
+class Day1(private val input: Pair<List<Int>, List<Int>>) : Puzzle {
 
     override fun part1(): Any {
         val (lhs, rhs) = input
@@ -23,16 +21,19 @@ class Day1(input: List<String>) : Puzzle {
         }
     }
 
-    private fun mapInput(input: List<String>): Pair<List<Int>, List<Int>> {
-        val lhs = mutableListOf<Int>()
-        val rhs = mutableListOf<Int>()
+    companion object : Puzzle.InputTransformer<Pair<List<Int>, List<Int>>> {
 
-        input.forEach { line ->
-            val parts = line.split(' ')
-            lhs += parts.first().toInt()
-            rhs += parts.last().toInt()
+        override fun invoke(input: List<String>): Pair<List<Int>, List<Int>> {
+            val lhs = mutableListOf<Int>()
+            val rhs = mutableListOf<Int>()
+
+            input.forEach { line ->
+                val parts = line.split(' ')
+                lhs += parts.first().toInt()
+                rhs += parts.last().toInt()
+            }
+
+            return lhs.sorted() to rhs.sorted()
         }
-
-        return lhs.sorted() to rhs.sorted()
     }
 }

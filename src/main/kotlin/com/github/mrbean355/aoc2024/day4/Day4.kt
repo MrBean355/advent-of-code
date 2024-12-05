@@ -4,18 +4,26 @@ import com.github.mrbean355.aoc.Grid
 import com.github.mrbean355.aoc.Puzzle
 import com.github.mrbean355.aoc.plus
 
-class Day4(input: List<String>) : Puzzle {
-    private val grid = Grid(input.size, input.first().length) { x, y -> input[y][x] }
+class Day4(private val input: Grid<Char>) : Puzzle {
 
     override fun part1(): Any {
-        return grid.sumOf { (x, y) ->
-            grid.countXmasWords(x, y)
+        return input.sumOf { (x, y) ->
+            input.countXmasWords(x, y)
         }
     }
 
     override fun part2(): Any {
-        return grid.count { (x, y) ->
-            grid.isXmasCross(x, y)
+        return input.count { (x, y) ->
+            input.isXmasCross(x, y)
+        }
+    }
+
+    companion object : Puzzle.InputTransformer<Grid<Char>> {
+
+        override fun invoke(input: List<String>): Grid<Char> {
+            return Grid(input.size, input.first().length) { x, y ->
+                input[y][x]
+            }
         }
     }
 }

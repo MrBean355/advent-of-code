@@ -5,14 +5,14 @@ import com.github.mrbean355.aoc.dropIndex
 import kotlin.math.absoluteValue
 import kotlin.math.sign
 
-class Day2(private val input: List<String>) : Puzzle {
+class Day2(private val input: List<List<Int>>) : Puzzle {
 
     override fun part1(): Any {
-        return input.parseReports().count(::isReportSafe)
+        return input.count(::isReportSafe)
     }
 
     override fun part2(): Any {
-        return input.parseReports().count { levels ->
+        return input.count { levels ->
             if (isReportSafe(levels)) {
                 true
             } else {
@@ -24,12 +24,6 @@ class Day2(private val input: List<String>) : Puzzle {
                     isReportSafe(levels.dropIndex(index))
                 }
             }
-        }
-    }
-
-    private fun List<String>.parseReports(): List<List<Int>> {
-        return map { line ->
-            line.split(' ').map(String::toInt)
         }
     }
 
@@ -59,5 +53,14 @@ class Day2(private val input: List<String>) : Puzzle {
         }
 
         error("How did we get here?")
+    }
+
+    companion object : Puzzle.InputTransformer<List<List<Int>>> {
+
+        override fun invoke(input: List<String>): List<List<Int>> {
+            return input.map { line ->
+                line.split(' ').map(String::toInt)
+            }
+        }
     }
 }
