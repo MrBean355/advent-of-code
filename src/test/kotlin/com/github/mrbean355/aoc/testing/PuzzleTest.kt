@@ -3,6 +3,7 @@ package com.github.mrbean355.aoc.testing
 import com.github.mrbean355.aoc.Puzzle
 import org.junit.jupiter.api.Test
 import kotlin.reflect.KClass
+import kotlin.reflect.full.companionObjectInstance
 import kotlin.reflect.full.primaryConstructor
 import kotlin.test.DefaultAsserter.assertEquals
 
@@ -42,10 +43,17 @@ abstract class PuzzleTest(
         }
     }
 
-    private fun instantiate(input: String): Puzzle {
+    private fun instantiate(inputFile: String): Puzzle {
         val constructor = clazz.primaryConstructor
             ?: error("Class $clazz must have a primary constructor that accepts only List<String>")
 
-        return constructor.call(input.load())
+        val input = inputFile.load()
+        val companion = clazz.companionObjectInstance
+
+        return if (companion is Puzzle.InputTransformer<*>) {
+            constructor.call(companion(input))
+        } else {
+            constructor.call(input)
+        }
     }
 }
