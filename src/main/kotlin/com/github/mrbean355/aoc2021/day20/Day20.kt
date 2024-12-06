@@ -33,12 +33,10 @@ class Day20(input: List<String>) : Puzzle {
         repeat(iterations) {
             val mutated = grid.copy()
 
-            for (y in 0 until grid.height) {
-                for (x in 0 until grid.width) {
-                    val neighbours = grid.getNeighbours(x, y).toDecimal()
-                    val pixel = enhancement[neighbours]
-                    mutated[x, y] = pixel
-                }
+            mutated.forEach {
+                val neighbours = grid.getNeighbours(it).toDecimal()
+                val pixel = enhancement[neighbours]
+                mutated[it] = pixel
             }
 
             grid = mutated

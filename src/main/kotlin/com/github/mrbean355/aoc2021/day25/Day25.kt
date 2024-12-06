@@ -17,17 +17,15 @@ class Day25(private val input: List<String>) : Puzzle {
             var moves = 0
             var temp = grid.copy()
 
-            for (y in 0 until grid.height) {
-                for (x in 0 until grid.width) {
-                    val ch = grid[x, y]
-                    if (ch == EAST) {
-                        val next = if (x < grid.width - 1) x + 1 else 0
-                        val adjacent = grid[next, y]
-                        if (adjacent == EMPTY) {
-                            temp[x, y] = EMPTY
-                            temp[next, y] = EAST
-                            ++moves
-                        }
+            grid.forEach { (x, y) ->
+                val ch = grid[x, y]
+                if (ch == EAST) {
+                    val next = if (x < grid.xIndices.last) x + 1 else 0
+                    val adjacent = grid[next, y]
+                    if (adjacent == EMPTY) {
+                        temp[x, y] = EMPTY
+                        temp[next, y] = EAST
+                        ++moves
                     }
                 }
             }
@@ -35,17 +33,15 @@ class Day25(private val input: List<String>) : Puzzle {
             grid = temp
             temp = grid.copy()
 
-            for (y in 0 until grid.height) {
-                for (x in 0 until grid.width) {
-                    val ch = grid[x, y]
-                    if (ch == SOUTH) {
-                        val next = if (y < grid.height - 1) y + 1 else 0
-                        val adjacent = grid[x, next]
-                        if (adjacent == EMPTY) {
-                            temp[x, y] = EMPTY
-                            temp[x, next] = SOUTH
-                            ++moves
-                        }
+            grid.forEach { (x, y) ->
+                val ch = grid[x, y]
+                if (ch == SOUTH) {
+                    val next = if (y < grid.yIndices.last) y + 1 else 0
+                    val adjacent = grid[x, next]
+                    if (adjacent == EMPTY) {
+                        temp[x, y] = EMPTY
+                        temp[x, next] = SOUTH
+                        ++moves
                     }
                 }
             }

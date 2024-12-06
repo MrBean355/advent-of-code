@@ -36,8 +36,8 @@ private fun Grid<Char>.countXmasWords(x: Int, y: Int): Int {
 
     val spaceLeft = x > 2
     val spaceAbove = y > 2
-    val spaceRight = x < width - 3
-    val spaceBelow = y < height - 3
+    val spaceRight = x < xIndices.last - 2
+    val spaceBelow = y < yIndices.last - 2
 
     return buildList {
         if (spaceLeft) {
@@ -85,7 +85,7 @@ private fun Grid<Char>.isXmasCross(x: Int, y: Int): Boolean {
         return false
     }
 
-    if (x == 0 || x == width - 1 || y == 0 || y == height - 1) {
+    if (x == 0 || x == xIndices.last || y == 0 || y == yIndices.last) {
         // The centre of the cross cannot be on the boundary.
         return false
     }

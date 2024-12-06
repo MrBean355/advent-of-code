@@ -18,6 +18,12 @@ class Grid<T>(
     val height: Int
         get() = table.size
 
+    val xIndices: IntRange
+        get() = 0 until width
+
+    val yIndices: IntRange
+        get() = 0 until height
+
     operator fun get(x: Int, y: Int): T = table[y][x]
 
     operator fun get(point: Point): T = get(point.x, point.y)
@@ -31,7 +37,7 @@ class Grid<T>(
     }
 
     fun isInBounds(point: Point): Boolean {
-        return (point.x in 0 until width) && (point.y in 0 until height)
+        return point.x in xIndices && point.y in yIndices
     }
 
     fun addRow(index: Int, initialiser: (Int) -> T) {
@@ -45,14 +51,14 @@ class Grid<T>(
         }
     }
 
-    fun getNeighbours(x: Int, y: Int): List<T> {
+    fun getNeighbours(point: Point): List<T> {
         val result = mutableListOf<T>()
-        for (y2 in y - 1..y + 1) {
-            if (y2 !in 0 until height) {
+        for (y2 in point.y - 1..point.y + 1) {
+            if (y2 !in yIndices) {
                 continue
             }
-            for (x2 in x - 1..x + 1) {
-                if (x2 in 0 until width) {
+            for (x2 in point.x - 1..point.x + 1) {
+                if (x2 in xIndices) {
                     result += get(x2, y2)
                 }
             }

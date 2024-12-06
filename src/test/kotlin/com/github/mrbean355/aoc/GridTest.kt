@@ -15,6 +15,22 @@ class GridTest {
     }
 
     @Test
+    fun testSize_SquareGrid() {
+        assertEquals(3, squareGrid.width)
+        assertEquals(3, squareGrid.height)
+        assertEquals(0..2, squareGrid.xIndices)
+        assertEquals(0..2, squareGrid.yIndices)
+    }
+
+    @Test
+    fun testSize_RectangleGrid() {
+        assertEquals(3, rectangleGrid.width)
+        assertEquals(2, rectangleGrid.height)
+        assertEquals(0..2, rectangleGrid.xIndices)
+        assertEquals(0..1, rectangleGrid.yIndices)
+    }
+
+    @Test
     fun testIteration_SquareGrid() {
         val points = mutableListOf<Point>()
 
