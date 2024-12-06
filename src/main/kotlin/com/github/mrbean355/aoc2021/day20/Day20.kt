@@ -20,7 +20,7 @@ class Day20(input: List<String>) : Puzzle {
         var grid = Grid(
             rows = inputImage.size,
             columns = inputImage.first().size,
-            initialiser = { x, y -> inputImage[y][x] }
+            initialiser = { inputImage[it.y][it.x] }
         )
 
         repeat(iterations + 1) {

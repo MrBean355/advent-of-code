@@ -1,5 +1,6 @@
 package com.github.mrbean355.aoc2021.day5
 
+import com.github.mrbean355.aoc.Point
 import com.github.mrbean355.aoc.Puzzle
 
 class Day5(input: List<String>) : Puzzle {
@@ -57,17 +58,9 @@ class Day5(input: List<String>) : Puzzle {
         val tail: Point,
     )
 
-    private data class Point(
-        val x: Int,
-        val y: Int,
-    ) {
-        companion object {
-
-            /** Construct an instance from a string like "1,2". */
-            operator fun invoke(s: String): Point {
-                val (x, y) = s.split(',')
-                return Point(x.toInt(), y.toInt())
-            }
-        }
+    /** Construct an instance from a string like "1,2". */
+    private fun Point(s: String): Point {
+        val (x, y) = s.split(',')
+        return Point(x.toInt(), y.toInt())
     }
 }

@@ -1,5 +1,6 @@
 package com.github.mrbean355.aoc2021.day13
 
+import com.github.mrbean355.aoc.Point
 import com.github.mrbean355.aoc.Puzzle
 
 class Day13(private val input: List<String>) : Puzzle {
@@ -44,11 +45,6 @@ class Day13(private val input: List<String>) : Puzzle {
             FoldInstruction(axis.single().lowercaseChar(), position.toInt())
         }
     }
-
-    private data class Point(
-        val x: Int,
-        val y: Int,
-    )
 
     private class FoldInstruction(
         private val direction: Char,
