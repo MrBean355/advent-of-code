@@ -74,7 +74,7 @@ class Grid<T>(
 
             override fun next(): Point {
                 val x = next % width
-                val y = next / height
+                val y = next / width
 
                 ++next
 
