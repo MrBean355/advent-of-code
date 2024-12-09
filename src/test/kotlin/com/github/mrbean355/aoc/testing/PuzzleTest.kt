@@ -6,6 +6,7 @@ import kotlin.reflect.KClass
 import kotlin.reflect.full.companionObjectInstance
 import kotlin.reflect.full.primaryConstructor
 import kotlin.test.DefaultAsserter.assertEquals
+import kotlin.time.measureTimedValue
 
 /**
  * Base test class to make unit testing puzzles easier.
@@ -26,9 +27,10 @@ abstract class PuzzleTest(
         part1TestCases.forEach { (input, expected) ->
             val solution = instantiate(input)
 
-            val actual = solution.part1()
+            val (actual, duration) = measureTimedValue(solution::part1)
 
             assertEquals("Wrong output for $input:", expected, actual)
+            println("Execution took $duration for $input")
         }
     }
 
@@ -37,9 +39,10 @@ abstract class PuzzleTest(
         part2TestCases.forEach { (input, expected) ->
             val solution = instantiate(input)
 
-            val actual = solution.part2()
+            val (actual, duration) = measureTimedValue(solution::part2)
 
             assertEquals("Wrong output for $input:", expected, actual)
+            println("Execution took $duration for $input")
         }
     }
 
