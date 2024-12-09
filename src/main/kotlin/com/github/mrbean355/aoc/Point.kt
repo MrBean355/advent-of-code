@@ -9,6 +9,18 @@ data class Point(
     }
 }
 
+fun Point.directionVector(p2: Point): Point {
+    return Point(p2.x - x, p2.y - y)
+}
+
+operator fun Point.plus(other: Point): Point {
+    return Point(x + other.x, y + other.y)
+}
+
+operator fun Point.minus(other: Point): Point {
+    return Point(x - other.x, y - other.y)
+}
+
 /**
  * @return a new [Point] moved one unit in the [direction].
  */
