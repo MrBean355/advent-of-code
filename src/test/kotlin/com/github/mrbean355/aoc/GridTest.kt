@@ -11,7 +11,7 @@ class GridTest {
     @BeforeEach
     fun setUp() {
         squareGrid = Grid(3, 3) { 'A' }
-        rectangleGrid = Grid(2, 3) { 'B' }
+        rectangleGrid = Grid(3, 2) { 'B' }
     }
 
     @Test

@@ -21,7 +21,7 @@ class Day4(private val input: Grid<Char>) : Puzzle {
     companion object : Puzzle.InputTransformer<Grid<Char>> {
 
         override fun invoke(input: List<String>): Grid<Char> {
-            return Grid(input.size, input.first().length) {
+            return Grid(input.first().length, input.size) {
                 input[it.y][it.x]
             }
         }

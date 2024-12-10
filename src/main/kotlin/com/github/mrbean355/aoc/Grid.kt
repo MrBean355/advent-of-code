@@ -1,13 +1,13 @@
 package com.github.mrbean355.aoc
 
 class Grid<T>(
-    rows: Int,
-    columns: Int,
+    width: Int,
+    height: Int,
     initialiser: (Point) -> T,
 ) : Iterable<Point> {
 
-    private val table: MutableList<MutableList<T>> = MutableList(rows) { y ->
-        MutableList(columns) { x ->
+    private val table: MutableList<MutableList<T>> = MutableList(height) { y ->
+        MutableList(width) { x ->
             initialiser(Point(x, y))
         }
     }
@@ -66,8 +66,20 @@ class Grid<T>(
         return result
     }
 
+    /**
+     * @return neighbours to the left, top, right and bottom of the [point].
+     */
+    fun getLateralNeighbours(point: Point): List<Point> {
+        return listOf(
+            Point(point.x - 1, point.y),
+            Point(point.x, point.y - 1),
+            Point(point.x + 1, point.y),
+            Point(point.x, point.y + 1),
+        ).filter(::isInBounds)
+    }
+
     fun copy(): Grid<T> {
-        return Grid(height, width, ::get)
+        return Grid(width, height, ::get)
     }
 
     override fun iterator(): Iterator<Point> {

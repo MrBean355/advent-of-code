@@ -63,8 +63,8 @@ class Day25(private val input: List<String>) : Puzzle {
 
     private fun parse(): Grid<Char> {
         return Grid(
-            rows = input.size,
-            columns = input.first().length, initialiser = { input[it.y][it.x] }
-        )
+            width = input.first().length,
+            height = input.size
+        ) { input[it.y][it.x] }
     }
 }

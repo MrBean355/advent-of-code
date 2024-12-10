@@ -18,10 +18,9 @@ class Day20(input: List<String>) : Puzzle {
 
     private fun enhanceImage(iterations: Int): Int {
         var grid = Grid(
-            rows = inputImage.size,
-            columns = inputImage.first().size,
-            initialiser = { inputImage[it.y][it.x] }
-        )
+            width = inputImage.first().size,
+            height = inputImage.size
+        ) { inputImage[it.y][it.x] }
 
         repeat(iterations + 1) {
             grid.addRow(0) { '.' }
