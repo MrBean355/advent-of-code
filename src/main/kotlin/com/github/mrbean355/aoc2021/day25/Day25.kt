@@ -1,7 +1,9 @@
 package com.github.mrbean355.aoc2021.day25
 
-import com.github.mrbean355.aoc.Grid
 import com.github.mrbean355.aoc.Puzzle
+import com.github.mrbean355.aoc.grid.CharGrid
+import com.github.mrbean355.aoc.grid.xIndices
+import com.github.mrbean355.aoc.grid.yIndices
 
 private const val EMPTY = '.'
 private const val EAST = '>'
@@ -10,7 +12,7 @@ private const val SOUTH = 'v'
 class Day25(private val input: List<String>) : Puzzle {
 
     override fun part1(): Any {
-        var grid = parse()
+        var grid = CharGrid(input)
         var iterations = 0
 
         while (true) {
@@ -59,12 +61,5 @@ class Day25(private val input: List<String>) : Puzzle {
 
     override fun part2(): Any {
         TODO("Not yet implemented")
-    }
-
-    private fun parse(): Grid<Char> {
-        return Grid(
-            width = input.first().length,
-            height = input.size
-        ) { input[it.y][it.x] }
     }
 }

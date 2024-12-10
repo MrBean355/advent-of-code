@@ -1,12 +1,13 @@
 package com.github.mrbean355.aoc2021.day20
 
-import com.github.mrbean355.aoc.Grid
 import com.github.mrbean355.aoc.Puzzle
+import com.github.mrbean355.aoc.grid.CharGrid
+import com.github.mrbean355.aoc.grid.getSelfAndNeighbours
+import com.github.mrbean355.aoc.grid.set
 
-class Day20(input: List<String>) : Puzzle {
+class Day20(private val input: List<String>) : Puzzle {
 
     private val enhancement = input.first()
-    private val inputImage = input.drop(2).map(String::toList)
 
     override fun part1(): Any {
         return enhanceImage(2)
@@ -17,10 +18,7 @@ class Day20(input: List<String>) : Puzzle {
     }
 
     private fun enhanceImage(iterations: Int): Int {
-        var grid = Grid(
-            width = inputImage.first().size,
-            height = inputImage.size
-        ) { inputImage[it.y][it.x] }
+        var grid = CharGrid(input.drop(2))
 
         repeat(iterations + 1) {
             grid.addRow(0) { '.' }
@@ -33,7 +31,7 @@ class Day20(input: List<String>) : Puzzle {
             val mutated = grid.copy()
 
             mutated.forEach {
-                val neighbours = grid.getNeighbours(it).toDecimal()
+                val neighbours = grid.getSelfAndNeighbours(it).toDecimal()
                 val pixel = enhancement[neighbours]
                 mutated[it] = pixel
             }

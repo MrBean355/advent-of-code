@@ -1,9 +1,13 @@
 package com.github.mrbean355.aoc2024.day6
 
 import com.github.mrbean355.aoc.Direction
-import com.github.mrbean355.aoc.Grid
 import com.github.mrbean355.aoc.Point
 import com.github.mrbean355.aoc.Puzzle
+import com.github.mrbean355.aoc.grid.CharGrid
+import com.github.mrbean355.aoc.grid.Grid
+import com.github.mrbean355.aoc.grid.get
+import com.github.mrbean355.aoc.grid.isInBounds
+import com.github.mrbean355.aoc.grid.set
 import com.github.mrbean355.aoc.move
 import com.github.mrbean355.aoc.turnRight
 
@@ -31,9 +35,7 @@ class Day6(private val input: Grid<Char>) : Puzzle {
     companion object : Puzzle.InputTransformer<Grid<Char>> {
 
         override fun invoke(input: List<String>): Grid<Char> {
-            return Grid(input.first().length, input.size) {
-                input[it.y][it.x]
-            }
+            return CharGrid(input)
         }
     }
 }

@@ -1,7 +1,10 @@
 package com.github.mrbean355.aoc2024.day4
 
-import com.github.mrbean355.aoc.Grid
 import com.github.mrbean355.aoc.Puzzle
+import com.github.mrbean355.aoc.grid.CharGrid
+import com.github.mrbean355.aoc.grid.Grid
+import com.github.mrbean355.aoc.grid.xIndices
+import com.github.mrbean355.aoc.grid.yIndices
 import com.github.mrbean355.aoc.plus
 
 class Day4(private val input: Grid<Char>) : Puzzle {
@@ -21,9 +24,7 @@ class Day4(private val input: Grid<Char>) : Puzzle {
     companion object : Puzzle.InputTransformer<Grid<Char>> {
 
         override fun invoke(input: List<String>): Grid<Char> {
-            return Grid(input.first().length, input.size) {
-                input[it.y][it.x]
-            }
+            return CharGrid(input)
         }
     }
 }

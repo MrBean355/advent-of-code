@@ -1,8 +1,11 @@
 package com.github.mrbean355.aoc2024.day10
 
-import com.github.mrbean355.aoc.Grid
 import com.github.mrbean355.aoc.Point
 import com.github.mrbean355.aoc.Puzzle
+import com.github.mrbean355.aoc.grid.Grid
+import com.github.mrbean355.aoc.grid.IntGrid
+import com.github.mrbean355.aoc.grid.get
+import com.github.mrbean355.aoc.grid.getLateralNeighbours
 
 private const val TRAILHEAD = 0
 private const val PEAK = 9
@@ -24,12 +27,7 @@ class Day10(private val input: Grid<Int>) : Puzzle {
     companion object : Puzzle.InputTransformer<Grid<Int>> {
 
         override fun invoke(input: List<String>): Grid<Int> {
-            return Grid(
-                width = input.first().length,
-                height = input.size
-            ) { (x, y) ->
-                input[y][x].digitToIntOrNull() ?: -1
-            }
+            return IntGrid(input, fallback = { -1 })
         }
     }
 }
