@@ -13,5 +13,4 @@ class Day7Test : PuzzleTest(Day7::class) {
         "2022/day7/example.txt" to 24_933_642L,
         "2022/day7/puzzle.txt" to 1_498_966L,
     )
-
 }

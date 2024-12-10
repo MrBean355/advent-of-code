@@ -9,7 +9,6 @@ class Day11(input: List<String>) : Puzzle {
     override fun part1(): Long = seats.runSimulation(tolerance = 3, limited = true)
 
     override fun part2(): Long = seats.runSimulation(tolerance = 4, limited = false)
-
 }
 
 /**

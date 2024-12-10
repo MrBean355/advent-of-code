@@ -42,9 +42,9 @@ private fun infixToPostfix(tokens: List<String>, precedence: Precedence): List<S
         when {
             token.toLongOrNull() != null -> output.offer(token)
             token.isOperator() -> {
-                while (operators.isNotEmpty()
-                    && operators.peek() != "("
-                    && precedence.greaterOrEqual(operators.peek(), token)
+                while (operators.isNotEmpty() &&
+                    operators.peek() != "(" &&
+                    precedence.greaterOrEqual(operators.peek(), token)
                 ) {
                     output.offer(operators.pop())
                 }

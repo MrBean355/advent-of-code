@@ -13,5 +13,4 @@ class Day1Test : PuzzleTest(Day1::class) {
         "2024/day1/example.txt" to 31,
         "2024/day1/puzzle.txt" to 24643097,
     )
-
 }

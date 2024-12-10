@@ -55,7 +55,6 @@ fun <T> Grid(
     input: List<String>,
     map: (Char) -> T,
 ): Grid<T> {
-
     val width = input.firstOrNull()?.length ?: 0
     val height = input.size
 

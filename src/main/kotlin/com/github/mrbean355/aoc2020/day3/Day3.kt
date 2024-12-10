@@ -10,10 +10,10 @@ class Day3(private val input: List<String>) : Puzzle {
 
     override fun part2(): Long {
         return input.countTrees(right = 1, down = 1) *
-                input.countTrees(right = 3, down = 1) *
-                input.countTrees(right = 5, down = 1) *
-                input.countTrees(right = 7, down = 1) *
-                input.countTrees(right = 1, down = 2)
+            input.countTrees(right = 3, down = 1) *
+            input.countTrees(right = 5, down = 1) *
+            input.countTrees(right = 7, down = 1) *
+            input.countTrees(right = 1, down = 2)
     }
 
     private fun List<String>.countTrees(right: Int, down: Int): Long {

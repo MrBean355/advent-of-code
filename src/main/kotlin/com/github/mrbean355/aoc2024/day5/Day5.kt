@@ -72,7 +72,6 @@ class Day5(private val input: Input) : Puzzle {
 
                     dependencies.getOrPut(b.toInt()) { mutableSetOf() }
                         .add(a.toInt())
-
                 } else if (line.isNotBlank()) {
                     val parts = line.split(',')
                     updates += parts.map { it.toInt() }

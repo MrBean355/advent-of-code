@@ -1,7 +1,9 @@
 package com.github.mrbean355.aoc2022.day2
 
 enum class Move {
-    Rock, Paper, Scissors
+    Rock,
+    Paper,
+    Scissors
 }
 
 private val winners = mapOf(
@@ -11,7 +13,9 @@ private val winners = mapOf(
 )
 
 enum class Outcome {
-    Win, Lose, Draw
+    Win,
+    Lose,
+    Draw
 }
 
 fun calculatePoints(them: Move, me: Move): Int {

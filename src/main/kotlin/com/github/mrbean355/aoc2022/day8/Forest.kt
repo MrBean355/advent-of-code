@@ -100,11 +100,13 @@ class Forest private constructor(
     companion object {
 
         fun from(input: List<String>): Forest {
-            return Forest(input.map { row ->
-                row.map { height ->
-                    Tree(height.digitToInt())
+            return Forest(
+                input.map { row ->
+                    row.map { height ->
+                        Tree(height.digitToInt())
+                    }
                 }
-            })
+            )
         }
     }
 }

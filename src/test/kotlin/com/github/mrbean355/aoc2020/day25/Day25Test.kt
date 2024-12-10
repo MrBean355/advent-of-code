@@ -10,5 +10,4 @@ class Day25Test : PuzzleTest(Day25::class) {
     )
 
     override val part2TestCases = emptyMap<String, Unit>()
-
 }

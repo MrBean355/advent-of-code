@@ -52,7 +52,7 @@ private fun parseInput(input: List<String>): Map<String, Set<NestedBag>> {
             .filter { it != "no other" }
             .map {
                 it.dropWhile { it.isDigit() }.trim() to
-                        it.takeWhile { it.isDigit() }.toInt()
+                    it.takeWhile { it.isDigit() }.toInt()
             }.toSet()
     }
 

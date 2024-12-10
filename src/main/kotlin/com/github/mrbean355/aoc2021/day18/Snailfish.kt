@@ -29,7 +29,6 @@ sealed class Snailfish(
         override val magnitude get() = 3 * lhs.magnitude + 2 * rhs.magnitude
 
         override fun toString() = "[$lhs,$rhs]"
-
     }
 }
 
@@ -95,7 +94,6 @@ private fun Snailfish.split(): Boolean {
 private fun Snailfish.findNestedPair(
     level: Int = 1,
 ): Snailfish.Pair? {
-
     if (this !is Snailfish.Pair) {
         return null
     }

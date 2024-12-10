@@ -107,7 +107,6 @@ class Day16(input: List<String>) : Puzzle {
         ) : Packet {
 
             override fun evaluate() = value
-
         }
 
         class Operator(

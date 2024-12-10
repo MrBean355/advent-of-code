@@ -13,5 +13,4 @@ class Day5Test : PuzzleTest(Day5::class) {
         "2022/day5/example.txt" to "MCD",
         "2022/day5/puzzle.txt" to "LBBVJBRMH",
     )
-
 }

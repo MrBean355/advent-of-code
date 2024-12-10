@@ -36,10 +36,14 @@ private class Tile(
     private val left = content.map { it.first() }.joinToString("")
     private val right = content.map { it.last() }.joinToString("")
     private val edges = listOf(
-        top, top.reversed(),
-        bottom, bottom.reversed(),
-        left, left.reversed(),
-        right, right.reversed()
+        top,
+        top.reversed(),
+        bottom,
+        bottom.reversed(),
+        left,
+        left.reversed(),
+        right,
+        right.reversed()
     )
 
     fun matches(other: Tile): Boolean {

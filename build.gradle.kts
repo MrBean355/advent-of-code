@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("jvm") version "2.1.0"
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
 repositories {
@@ -21,6 +22,18 @@ java {
 
 kotlin {
     compilerOptions.jvmTarget = JvmTarget.JVM_17
+}
+
+spotless {
+    kotlin {
+        ktlint().editorConfigOverride(
+            mapOf(
+                "standard:max-line-length" to 200,
+                "ktlint_standard_trailing-comma-on-call-site" to "disabled",
+                "ktlint_standard_trailing-comma-on-declaration-site" to "disabled",
+            )
+        )
+    }
 }
 
 tasks.test {

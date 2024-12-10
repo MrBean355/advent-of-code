@@ -9,6 +9,5 @@ class Day23Test : PuzzleTest(Day23::class) {
         "2020/day23/puzzle.txt" to "68245739",
     )
 
-    override val part2TestCases = mapOf<String, Any>(
-    )
+    override val part2TestCases = mapOf<String, Any>()
 }

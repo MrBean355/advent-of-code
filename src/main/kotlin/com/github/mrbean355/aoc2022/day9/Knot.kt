@@ -47,8 +47,8 @@ fun Knot.move(direction: String) {
 }
 
 private fun Knot.shouldMoveTowards(other: Knot): Boolean {
-    return x !in (other.x - 1)..(other.x + 1)
-            || y !in (other.y - 1)..(other.y + 1)
+    return x !in (other.x - 1)..(other.x + 1) ||
+        y !in (other.y - 1)..(other.y + 1)
 }
 
 private fun Knot.moveTowards(other: Knot) {

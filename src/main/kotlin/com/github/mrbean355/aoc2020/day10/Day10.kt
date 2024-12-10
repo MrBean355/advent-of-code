@@ -34,7 +34,6 @@ class Day10(input: List<String>) : Puzzle {
             outDegrees[it] = one + two + three
         }
 
-
         return outDegrees.getValue(joltages.first())
     }
 }

@@ -13,5 +13,4 @@ class Day22Test : PuzzleTest(Day22::class) {
 
     override val part2TestCases: Map<String, Long>
         get() = emptyMap()
-
 }

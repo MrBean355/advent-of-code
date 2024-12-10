@@ -18,5 +18,4 @@ class Day13Test : PuzzleTest(Day13::class) {
         "2020/day13/part2_example6.txt" to 1202161486L,
         // "2020/day13/puzzle.txt" to 0L, // FIXME: takes too long, find a better solution
     )
-
 }

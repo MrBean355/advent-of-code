@@ -17,7 +17,6 @@ sealed class Command(
     ) : Command(value)
 
     companion object
-
 }
 
 fun Command.Companion.from(string: String): Command = when {
