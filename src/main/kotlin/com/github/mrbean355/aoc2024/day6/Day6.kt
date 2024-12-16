@@ -8,8 +8,9 @@ import com.github.mrbean355.aoc.grid.Grid
 import com.github.mrbean355.aoc.grid.get
 import com.github.mrbean355.aoc.grid.isInBounds
 import com.github.mrbean355.aoc.grid.set
-import com.github.mrbean355.aoc.move
+import com.github.mrbean355.aoc.plus
 import com.github.mrbean355.aoc.turnRight
+import com.github.mrbean355.aoc.vector
 
 private const val GUARD = '^'
 private const val OBSTACLE = '#'
@@ -57,13 +58,13 @@ private fun Grid<Char>.runSimulation(): Set<Point>? {
         if (isPathBlocked(position, facing)) {
             facing = facing.turnRight()
         } else {
-            position = position.move(facing)
+            position += facing.vector
         }
     }
 }
 
 private fun Grid<Char>.isPathBlocked(point: Point, facing: Direction): Boolean {
-    val nextPoint = point.move(facing)
+    val nextPoint = point + facing.vector
 
     return if (isInBounds(nextPoint)) {
         get(nextPoint) == OBSTACLE

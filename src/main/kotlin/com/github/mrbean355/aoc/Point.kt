@@ -1,5 +1,7 @@
 package com.github.mrbean355.aoc
 
+import kotlin.math.sign
+
 data class Point(
     val x: Int,
     val y: Int,
@@ -18,6 +20,10 @@ fun Point.directionVector(p2: Point): Point {
     return Point(p2.x - x, p2.y - y)
 }
 
+fun Point.normalise(): Point {
+    return Point(x.sign, y.sign)
+}
+
 operator fun Point.plus(other: Point): Point {
     return Point(x + other.x, y + other.y)
 }
@@ -26,14 +32,19 @@ operator fun Point.minus(other: Point): Point {
     return Point(x - other.x, y - other.y)
 }
 
-/**
- * @return a new [Point] moved one unit in the [direction].
- */
-fun Point.move(direction: Direction): Point {
-    return when (direction) {
-        Direction.Left -> Point(x - 1, y)
-        Direction.Up -> Point(x, y - 1)
-        Direction.Right -> Point(x + 1, y)
-        Direction.Down -> Point(x, y + 1)
+fun Point.rangeTo(to: Point): List<Point> {
+    require(x == to.x || y == to.y) { "Points must align vertically or horizontally" }
+
+    val vector = directionVector(to).normalise()
+
+    return buildList {
+        var next = this@rangeTo
+
+        while (next != to) {
+            add(next)
+            next += vector
+        }
+
+        add(to)
     }
 }
