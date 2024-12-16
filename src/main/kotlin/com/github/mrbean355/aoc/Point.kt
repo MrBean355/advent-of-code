@@ -9,6 +9,11 @@ data class Point(
     }
 }
 
+fun Point(input: String): Point {
+    val (x, y) = input.split(',')
+    return Point(x.toInt(), y.toInt())
+}
+
 fun Point.directionVector(p2: Point): Point {
     return Point(p2.x - x, p2.y - y)
 }
