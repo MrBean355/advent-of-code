@@ -70,6 +70,22 @@ fun <T> Grid(
     )
 }
 
+fun <T> Grid(
+    width: Int,
+    height: Int,
+    initialiser: (Point) -> T,
+): Grid<T> {
+    require(height > 0 && width > 0) { "Cannot have empty rows or columns" }
+
+    return GridImpl(
+        table = MutableList(height) { y ->
+            MutableList(width) { x ->
+                initialiser(Point(x, y))
+            }
+        }
+    )
+}
+
 val Grid<*>.xIndices: IntRange
     get() = 0 until width
 
