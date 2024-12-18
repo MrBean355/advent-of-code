@@ -8,7 +8,7 @@ class Day6(input: List<String>) : Puzzle {
     private val answers = "abcdefghijklmnopqrstuvwxyz".toList()
 
     override fun part1(): Int {
-        return groups.sumBy { members ->
+        return groups.sumOf { members ->
             answers.count { answer ->
                 members.any {
                     answer in it
@@ -18,7 +18,7 @@ class Day6(input: List<String>) : Puzzle {
     }
 
     override fun part2(): Int {
-        return groups.sumBy { members ->
+        return groups.sumOf { members ->
             answers.count { answer ->
                 members.all {
                     answer in it

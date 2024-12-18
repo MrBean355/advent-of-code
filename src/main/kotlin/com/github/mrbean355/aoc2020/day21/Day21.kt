@@ -10,7 +10,7 @@ class Day21(input: List<String>) : Puzzle {
     override fun part1(): Long {
         val safeIngredients = findSafeIngredients()
 
-        return allFood.sumBy { food ->
+        return allFood.sumOf { food ->
             food.ingredients.count { it in safeIngredients }
         }.toLong()
     }

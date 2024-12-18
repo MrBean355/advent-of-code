@@ -7,7 +7,7 @@ class Player(
 
     fun score(): Int {
         var factor = deck.size
-        return deck.sumBy {
+        return deck.sumOf {
             it * factor--
         }
     }
