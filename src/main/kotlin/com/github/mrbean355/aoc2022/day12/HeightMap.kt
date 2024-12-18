@@ -1,5 +1,6 @@
 package com.github.mrbean355.aoc2022.day12
 
+import com.github.mrbean355.aoc.findShortestPath
 import org.jgrapht.graph.DefaultDirectedGraph
 import org.jgrapht.graph.DefaultEdge
 
@@ -21,45 +22,15 @@ class HeightMap(
     }
 
     fun findShortestPath(fromIndex: Int = startIndex): Int {
-        val dist = mutableMapOf<Int, Int>()
-        val prev = mutableMapOf<Int, Int>()
-        val q = mutableListOf<Int>()
-
-        graph.vertexSet().forEach { v ->
-            dist[v] = Int.MAX_VALUE
-            q += v
-        }
-
-        dist[fromIndex] = 0
-
-        while (q.isNotEmpty()) {
-            val u = q.minBy(dist::getValue)
-            if (u == end) {
-                break
+        return findShortestPath(
+            vertices = graph.vertexSet(),
+            source = fromIndex,
+            target = end,
+            getNeighbours = {
+                graph.outgoingEdgesOf(it)
+                    .map(graph::getEdgeTarget)
             }
-            q.remove(u)
-
-            graph.outgoingEdgesOf(u)
-                .map(graph::getEdgeTarget)
-                .filter { it in q }
-                .forEach { v ->
-                    val alt = dist.getValue(u) + 1
-                    if (alt < dist.getValue(v)) {
-                        dist[v] = alt
-                        prev[v] = u
-                    }
-                }
-        }
-
-        val s = mutableListOf<Int>()
-        var u: Int? = end
-
-        while (u != null) {
-            s.add(0, u)
-            u = prev[u]
-        }
-
-        return s.size - 1
+        )!!.size - 1
     }
 
     fun findOverallShortestPath(): Int {
