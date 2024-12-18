@@ -30,7 +30,7 @@ abstract class PuzzleTest(
             val (actual, duration) = measureTimedValue(solution::part1)
 
             assertEquals("Wrong output for $input:", expected, actual)
-            println("Execution took $duration for $input")
+            println("Execution took $duration for part 1: $input")
         }
     }
 
@@ -42,7 +42,7 @@ abstract class PuzzleTest(
             val (actual, duration) = measureTimedValue(solution::part2)
 
             assertEquals("Wrong output for $input:", expected, actual)
-            println("Execution took $duration for $input")
+            println("Execution took $duration for part 2: $input")
         }
     }
 
