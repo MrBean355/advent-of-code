@@ -48,5 +48,9 @@ fun <T> findShortestPath(
         }
     }
 
-    return s.ifEmpty { null }
+    return if (s.isNotEmpty() && s.first() == source) {
+        s
+    } else {
+        null
+    }
 }
