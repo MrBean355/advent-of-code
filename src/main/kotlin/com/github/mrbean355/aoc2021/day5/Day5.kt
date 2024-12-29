@@ -57,10 +57,4 @@ class Day5(input: List<String>) : Puzzle {
         val head: Point,
         val tail: Point,
     )
-
-    /** Construct an instance from a string like "1,2". */
-    private fun Point(s: String): Point {
-        val (x, y) = s.split(',')
-        return Point(x.toInt(), y.toInt())
-    }
 }
