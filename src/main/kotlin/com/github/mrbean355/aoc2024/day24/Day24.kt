@@ -43,8 +43,6 @@ class Day24(private val input: List<String>) : Puzzle {
             }
         }
 
-        println(binary)
-
         return binary.toLong(radix = 2)
     }
 

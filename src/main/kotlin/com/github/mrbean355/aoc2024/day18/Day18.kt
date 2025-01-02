@@ -36,11 +36,6 @@ class Day18(private val input: Input) : Puzzle {
             if (path == null || path.first() != Point(0, 0)) {
                 return "${it.x},${it.y}"
             }
-
-            if (it == Point(6, 1)) {
-                println(grid)
-                println(path)
-            }
         }
 
         error("How did we get here?")

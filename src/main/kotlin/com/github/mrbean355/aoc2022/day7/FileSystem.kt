@@ -85,15 +85,3 @@ class File(
         return "- $name (file, size=$size)"
     }
 }
-
-fun Node.print(level: Int = 0) {
-    val prefix = buildString {
-        repeat(level) { append("  ") }
-    }
-    println(prefix + toString())
-    if (this is Directory) {
-        children.forEach {
-            it.print(level = level + 1)
-        }
-    }
-}
