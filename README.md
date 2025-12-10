@@ -5,10 +5,10 @@ or even fully solved; I just have fun trying to figure them out.
 
 Solutions currently in this repository:
 
-- [2015](src/main/kotlin/com/github/mrbean355/aoc2015)
-- [2019](src/main/kotlin/com/github/mrbean355/aoc2019)
-- [2020](src/main/kotlin/com/github/mrbean355/aoc2020)
-- [2021](src/main/kotlin/com/github/mrbean355/aoc2021)
-- [2022](src/main/kotlin/com/github/mrbean355/aoc2022)
-- [2023](src/main/kotlin/com/github/mrbean355/aoc2023)
+- [2025](src/main/kotlin/com/github/mrbean355/aoc2025)
 - [2024](src/main/kotlin/com/github/mrbean355/aoc2024)
+- [2022](src/main/kotlin/com/github/mrbean355/aoc2022)
+- [2021](src/main/kotlin/com/github/mrbean355/aoc2021)
+- [2020](src/main/kotlin/com/github/mrbean355/aoc2020)
+- [2019](src/main/kotlin/com/github/mrbean355/aoc2019)
+- [2015](src/main/kotlin/com/github/mrbean355/aoc2015)
