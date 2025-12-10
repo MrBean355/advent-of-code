@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    kotlin("jvm") version "2.1.0"
-    id("com.diffplug.spotless") version "6.25.0"
+    kotlin("jvm") version "2.2.21"
+    id("com.diffplug.spotless") version "8.1.0"
 }
 
 repositories {
@@ -26,7 +26,7 @@ kotlin {
 
 spotless {
     kotlin {
-        ktlint().editorConfigOverride(
+        ktlint("1.8.0").editorConfigOverride(
             mapOf(
                 "standard:max-line-length" to 200,
                 "ktlint_standard_trailing-comma-on-call-site" to "disabled",
