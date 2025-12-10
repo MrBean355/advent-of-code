@@ -29,6 +29,7 @@ class Day14(input: List<String>) : Puzzle {
         commands.forEach { cmd ->
             when (cmd) {
                 is Command.SetMask -> mask = cmd.value
+
                 is Command.SetMemory -> {
                     cmd.maskAddress(mask).forEach {
                         memory[it] = cmd.value

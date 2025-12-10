@@ -26,6 +26,7 @@ class Day10(private val input: List<String>) : Puzzle {
         input.forEach { command ->
             when {
                 command == "noop" -> cycle()
+
                 command.startsWith("addx") -> {
                     cycle()
                     cycle()

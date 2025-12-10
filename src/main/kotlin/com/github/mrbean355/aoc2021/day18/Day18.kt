@@ -35,7 +35,9 @@ class Day18(private val input: List<String>) : Puzzle {
             while (true) {
                 when (input[i]) {
                     '[' -> ++level
+
                     ']' -> --level
+
                     ',' -> {
                         if (level == 1) {
                             break

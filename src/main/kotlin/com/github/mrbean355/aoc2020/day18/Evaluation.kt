@@ -41,6 +41,7 @@ private fun infixToPostfix(tokens: List<String>, precedence: Precedence): List<S
     for (token in tokens) {
         when {
             token.toLongOrNull() != null -> output.offer(token)
+
             token.isOperator() -> {
                 while (operators.isNotEmpty() &&
                     operators.peek() != "(" &&
@@ -52,6 +53,7 @@ private fun infixToPostfix(tokens: List<String>, precedence: Precedence): List<S
             }
 
             token == "(" -> operators.push(token)
+
             token == ")" -> {
                 while (operators.peek() != "(") {
                     output.offer(operators.pop())
@@ -72,8 +74,7 @@ private fun infixToPostfix(tokens: List<String>, precedence: Precedence): List<S
     return output.toList()
 }
 
-private fun String.isOperator(): Boolean =
-    this == "+" || this == "*"
+private fun String.isOperator(): Boolean = this == "+" || this == "*"
 
 private fun String.tokenise(): List<String> {
     val tokens = mutableListOf<String>()

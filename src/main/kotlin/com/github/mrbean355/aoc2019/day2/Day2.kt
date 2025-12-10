@@ -44,6 +44,7 @@ class Day2(input: List<String>) : Puzzle {
                 }
 
                 99 -> break
+
                 else -> error("Unexpected opcode: $op")
             }
             ptr += 4

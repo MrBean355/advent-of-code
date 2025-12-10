@@ -12,7 +12,9 @@ class Day6(private val input: List<Instruction>) : Puzzle {
             instruction.forEachLight { index ->
                 when (instruction) {
                     is Instruction.TurnOn -> turnedOn += index
+
                     is Instruction.TurnOff -> turnedOn -= index
+
                     is Instruction.Toggle -> {
                         if (!turnedOn.add(index)) {
                             turnedOn -= index
@@ -59,6 +61,7 @@ class Day6(private val input: List<Instruction>) : Puzzle {
                     }
 
                     "toggle" -> Instruction.Toggle(Point(parts[1]), Point(parts[3]))
+
                     else -> error("Invalid command: $line")
                 }
             }

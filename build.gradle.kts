@@ -31,6 +31,7 @@ spotless {
                 "standard:max-line-length" to 200,
                 "ktlint_standard_trailing-comma-on-call-site" to "disabled",
                 "ktlint_standard_trailing-comma-on-declaration-site" to "disabled",
+                "ktlint_standard_function-expression-body" to "disabled",
             )
         )
     }

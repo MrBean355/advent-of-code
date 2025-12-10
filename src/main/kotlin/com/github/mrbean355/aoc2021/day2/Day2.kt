@@ -36,6 +36,7 @@ class Day2(private val input: List<String>) : Puzzle {
                 }
 
                 "up" -> aim -= amount
+
                 "down" -> aim += amount
             }
         }

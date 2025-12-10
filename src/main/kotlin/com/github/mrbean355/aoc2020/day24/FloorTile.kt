@@ -7,14 +7,18 @@ data class FloorTile(
     fun translate(direction: String) {
         when (direction) {
             "e" -> ++x
+
             "w" -> --x
+
             "nw" -> {
                 --x
                 ++y
             }
 
             "ne" -> ++y
+
             "sw" -> --y
+
             "se" -> {
                 ++x
                 --y

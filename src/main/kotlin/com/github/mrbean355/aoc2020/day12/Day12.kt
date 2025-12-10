@@ -38,9 +38,13 @@ class Day12(input: List<String>) : Puzzle {
         directions.forEach { instruction ->
             when (instruction.command) {
                 'N' -> markerY += instruction.amount
+
                 'S' -> markerY -= instruction.amount
+
                 'E' -> markerX += instruction.amount
+
                 'W' -> markerX -= instruction.amount
+
                 'L' -> {
                     val (nx, ny) = translate(markerX, markerY, shipX, shipY, instruction.amount)
                     markerX = nx
@@ -104,9 +108,13 @@ private class Ship(
         }
         when (normalised) {
             0 -> x += amount
+
             90 -> y += amount
+
             180 -> x -= amount
+
             270 -> y -= amount
+
             else -> {
                 error("Unsupported direction: $facing")
             }

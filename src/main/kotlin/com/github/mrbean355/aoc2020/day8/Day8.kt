@@ -46,6 +46,7 @@ private fun List<Instruction>.evaluate(): Evaluation {
         val instruction = get(pc)
         when (instruction.name) {
             "nop" -> ++pc
+
             "acc" -> {
                 acc += instruction.argument
                 ++pc
@@ -63,10 +64,9 @@ private class Instruction(
     val argument: Int,
 )
 
-private fun String.toInstruction(): Instruction =
-    split(' ').run {
-        Instruction(first(), get(1).toInt())
-    }
+private fun String.toInstruction(): Instruction = split(' ').run {
+    Instruction(first(), get(1).toInt())
+}
 
 private fun Instruction.mutate(newName: String): Instruction {
     return Instruction(newName, argument)

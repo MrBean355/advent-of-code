@@ -49,8 +49,11 @@ private fun String.extractProperties(validateProperties: Boolean): List<String> 
 
         when (key) {
             "byr" -> value.toInt() in 1920..2002
+
             "iyr" -> value.toInt() in 2010..2020
+
             "eyr" -> value.toInt() in 2020..2030
+
             "hgt" -> {
                 when {
                     value.endsWith("cm") -> value.dropLast(2).toInt() in 150..193
@@ -60,9 +63,13 @@ private fun String.extractProperties(validateProperties: Boolean): List<String> 
             }
 
             "hcl" -> value.matches(hairColour)
+
             "ecl" -> value in eyeColours
+
             "pid" -> value.matches(passportId)
+
             "cid" -> true
+
             else -> error("Unexpected property: $key")
         }
     }.map {

@@ -76,6 +76,7 @@ class Day16(input: List<String>) : Puzzle {
     private fun Packet.sumAllVersions(): Int {
         return when (this) {
             is Packet.Literal -> version
+
             is Packet.Operator -> version + args.sumOf {
                 it.sumAllVersions()
             }
@@ -119,15 +120,21 @@ class Day16(input: List<String>) : Puzzle {
             override fun evaluate(): Long {
                 return when (op) {
                     0 -> args.sumOf(Packet::evaluate)
+
                     1 -> args.fold(1) { acc, packet ->
                         acc * packet.evaluate()
                     }
 
                     2 -> args.minOf { it.evaluate() }
+
                     3 -> args.maxOf { it.evaluate() }
+
                     5 -> if (args[0].evaluate() > args[1].evaluate()) 1 else 0
+
                     6 -> if (args[0].evaluate() < args[1].evaluate()) 1 else 0
+
                     7 -> if (args[0].evaluate() == args[1].evaluate()) 1 else 0
+
                     else -> error("Unexpected operator: $op")
                 }
             }

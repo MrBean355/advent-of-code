@@ -27,7 +27,7 @@ class Day21(input: List<String>) : Puzzle {
         val map = TreeMap<String, String>()
         var i = 0
 
-        /**
+        /*
          * Look at each allergen, find which foods contain it.
          * Find which ingredients these foods have in common.
          * If there's just one in common, it must be the allergen.
