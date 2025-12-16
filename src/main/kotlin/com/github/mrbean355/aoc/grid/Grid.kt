@@ -10,6 +10,10 @@ interface Grid<T> : Iterable<Point> {
 
     operator fun set(x: Int, y: Int, value: T)
 
+    fun getRow(index: Int): List<T>
+
+    fun getColumn(index: Int): List<T>
+
     fun addRow(index: Int, initialiser: (Int) -> T)
 
     fun addColumn(index: Int, initialiser: (Int) -> T)
@@ -150,6 +154,16 @@ private class GridImpl<T>(
 
     override operator fun set(x: Int, y: Int, value: T) {
         table[y][x] = value
+    }
+
+    override fun getRow(index: Int): List<T> {
+        require(index in yIndices)
+        return table[index].toList()
+    }
+
+    override fun getColumn(index: Int): List<T> {
+        require(index in xIndices)
+        return table.map { it[index] }
     }
 
     override fun addRow(index: Int, initialiser: (Int) -> T) {
